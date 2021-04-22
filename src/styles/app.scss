@@ -1,0 +1,67 @@
+$theme: "dark";
+
+$themes:(dark: (fill: #313131,
+    contentFill: #1a1a1a,
+    primary: #ad4444,
+    secondary: #d46666,
+    textColor:#ffcece),
+  light: (fill: #f8f8f8,
+    contentFill: #cfcfcf,
+    primary: #445cad,
+    secondary: #6696d4));
+
+@function themify($theme-name, $color-name) {
+  @return map-get(map-get($themes, $theme-name), $color-name);
+}
+
+body {
+  background-color: themify($theme, "fill");
+}
+
+.wrapper {
+  width: 400px;
+}
+
+.tabs {
+  position: relative;
+  width: 100%;
+  font-size: 16px;
+
+  .tabs_controls,
+  .tabs_content {
+    width: 100%;
+    color: themify($theme, "textColor");
+  }
+
+  .tabs_controls {
+    display: flex;
+
+    .tab_button {
+      background-color: themify($theme, "contentFill");
+      padding: 10px 20px;
+      cursor: pointer;
+
+      &.active {
+        background-color: themify($theme, "secondary");
+      }
+    }
+  }
+
+  .tabs_content {
+    position: relative;
+    background-color: themify($theme, "contentFill");
+    overflow: hidden;
+
+    .tab {
+      position: absolute;
+      transform: translateX(-100%);
+      padding: 20px;
+
+      &.active {
+        position: relative;
+        transform: translateY(0);
+        background-color: themify($theme, "secondary");
+      }
+    }
+  }
+}
