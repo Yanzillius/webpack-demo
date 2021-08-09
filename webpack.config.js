@@ -2,6 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 300,  
+    poll: 1000
+  },
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -22,7 +28,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, './', 'dist'),
     compress: true,
     hot: true,
-    port: 9000
+    port: 9000,
+    watchContentBase: true
   },
   plugins: [
     new HtmlWebpackPlugin({
