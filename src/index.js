@@ -1,4 +1,6 @@
 import './styles/app.scss';
+import Button from "./components/Button/Button";
+import Text from "./components/Text/Text";
 
 class Tabs {
   constructor(
@@ -43,5 +45,8 @@ class Tabs {
     }
   }
 }
+
+document.body.appendChild(Button('text'))
+document.body.appendChild(Text('Lorem ipsum dolor sit amet consectetur adipisicing elit.'))
 
 new Tabs("tabs");
